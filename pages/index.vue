@@ -1,34 +1,34 @@
 <template>
   <section class="container">
     <div>
-      <logo />
+      <el-card :body-style="{ padding: '0px' }">
+        <img :src="p" class="image" />
+        <div style="padding: 14px;">
+          <span>???</span>
+        </div>
+      </el-card>
       <div>
-        <el-card :body-style="{ padding: '0px' }">
-          <img :src="photo" class="image" />
-          <div style="padding: 14px;">
-            <span>Yummy hamburger</span>
-            <div class="bottom clearfix">
-              <time class="time">{{ currentDate }}</time>
-              <el-button type="text" class="button">Operating button</el-button>
-            </div>
-          </div>
-        </el-card>
+        <el-button type="primary" size="mini" plain>{{name}}</el-button>
+        <el-button type="success" size="mini" plain>{{name}}</el-button>
+        <el-button type="warning" size="mini" plain>{{name}}</el-button>
+        <el-button type="danger" size="mini" plain>{{name}}</el-button>
       </div>
+      <span class="cc">{{cc}}</span>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import img from '~/assets/cats/001.jpg'
+import cats from '~/assets/cats.json';
 
 export default {
   components: {
-    Logo
   },
   data: function () {
     return {
-      "photo": img
+      "p": require('~/assets/'+cats.list[0].photos[0].src),
+      "name": cats.list[0].name,
+      "cc": cats.list[0].photos[0].cc
     }
   }
 }
@@ -68,5 +68,9 @@ export default {
 
 .image {
   width: 300px;
+}
+
+.cc {
+  font-size: x-small;
 }
 </style>
