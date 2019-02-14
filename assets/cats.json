@@ -1,0 +1,57 @@
+{
+  "list": [{
+    "photos": [{
+      "src": "cats/001.jpg",
+      "cc": "By Karin Langner-Bahmann - 投稿者自身による作品, CC 表示-継承 3.0, https://commons.wikimedia.org/w/index.php?curid=950497"
+    }],
+    "name": "アビシニアン"
+  }, {
+    "photos": [{
+      "src": "cats/002.jpg",
+      "cc": "CC 表示-継承 3.0, https://commons.wikimedia.org/w/index.php?curid=336295"
+    }],
+    "name": "アメリカンカール"
+  }, {
+    "photos": [{
+      "src": "cats/003.jpg",
+      "cc": "By Dustin Warrington - Flickr, CC 表示-継承 2.0, https://commons.wikimedia.org/w/index.php?curid=2645977"
+    }],
+    "name": "アメリカンショートヘア"
+  }, {
+    "photos": [{
+      "src": "cats/004.jpg",
+      "cc": "By Komisuamae - 投稿者自身による作品, パブリック・ドメイン, https://commons.wikimedia.org/w/index.php?curid=8994844"
+    }],
+    "name": "アメリカンボブテイル"
+  }, {
+    "photos": [{
+      "src": "cats/005.jpg",
+      "cc": "By Heikki Siltala - http://www.heikkisiltala.com/galleries/20080504heinola/0071.html, CC 表示 3.0, https://commons.wikimedia.org/w/index.php?curid=11354830"
+    }],
+    "name": "アメリカンワイヤーヘア"
+  }, {
+    "photos": [{
+      "src": "cats/006.jpg",
+      "cc": "CC 表示-継承 3.0, https://commons.wikimedia.org/w/index.php?curid=307569"
+    }],
+    "name": "エキゾチックショートヘア"
+  }, {
+    "photos": [{
+      "src": "cats/007.jpg",
+      "cc": "By オリジナルのアップロード者は英語版ウィキペディアのCatbarさん - en.wikipedia からコモンズに移動されました。, CC 表示-継承 3.0, https://commons.wikimedia.org/w/index.php?curid=2241036"
+    }],
+    "name": "エジプシャンマウ"
+  }, {
+    "photos": [{
+      "src": "cats/008.jpg",
+      "cc": "By Tom Bjornstad, Norway (User:ToB) - Tom Bjornstad, Norway (User:ToB), Copyrighted free use, https://commons.wikimedia.org/w/index.php?curid=397112"
+    }],
+    "name": "オシキャット"
+  }, {
+    "photos": [{
+      "src": "cats/009.jpg",
+      "cc": "By Cats rule - en wikipedia, CC 表示-継承 3.0, https://commons.wikimedia.org/w/index.php?curid=788437"
+    }],
+    "name": "オリエンタルショートヘア"
+  }]
+}

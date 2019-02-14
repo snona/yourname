@@ -2,23 +2,17 @@
   <section class="container">
     <div>
       <logo />
-      <h1 class="title">
-        yourname
-      </h1>
-      <h2 class="subtitle">
-        My mind-blowing Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
+      <div>
+        <el-card :body-style="{ padding: '0px' }">
+          <img :src="photo" class="image" />
+          <div style="padding: 14px;">
+            <span>Yummy hamburger</span>
+            <div class="bottom clearfix">
+              <time class="time">{{ currentDate }}</time>
+              <el-button type="text" class="button">Operating button</el-button>
+            </div>
+          </div>
+        </el-card>
       </div>
     </div>
   </section>
@@ -26,10 +20,16 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import img from '~/assets/cats/001.jpg'
 
 export default {
   components: {
     Logo
+  },
+  data: function () {
+    return {
+      "photo": img
+    }
   }
 }
 </script>
@@ -64,5 +64,9 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+
+.image {
+  width: 300px;
 }
 </style>
