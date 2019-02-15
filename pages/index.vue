@@ -21,12 +21,20 @@
               </div>
             </el-card>
             <el-row :gutter="20">
-              <el-col :span="6">
+              <el-col :span="12" :xs="12">
                 <el-button type="primary" size="mini" plain @click="success(name)">{{name}}</el-button>
               </el-col>
-              <el-col :span="6"><el-button type="success" size="mini" plain>{{name}}</el-button></el-col>
-              <el-col :span="6"><el-button type="warning" size="mini" plain>{{name}}</el-button></el-col>
-              <el-col :span="6"><el-button type="danger" size="mini" plain>{{name}}</el-button></el-col>
+              <el-col :span="12" :xs="12">
+                <el-button type="success" size="mini" plain>{{name}}</el-button>
+              </el-col>
+            </el-row>
+            <el-row :gutter="20">
+              <el-col :span="12" :xs="12">
+                <el-button type="warning" size="mini" plain>{{name}}</el-button>
+              </el-col>
+              <el-col :span="12" :xs="12">
+                <el-button type="danger" size="mini" plain>{{name}}</el-button>
+              </el-col>
             </el-row>
             <el-progress :percentage="70"></el-progress>
             <div class="cc">{{cc}}</div>
@@ -110,5 +118,9 @@ export default {
 
 .cc {
   font-size: x-small;
+}
+
+.el-row {
+  padding-bottom: 10px;
 }
 </style>
