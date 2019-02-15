@@ -1,19 +1,34 @@
 <template>
   <section class="container">
     <div>
-      <el-card :body-style="{ padding: '0px' }">
-        <img :src="p" class="image" />
-        <div style="padding: 14px;">
-          <span>???</span>
-        </div>
-      </el-card>
-      <div>
-        <el-button type="primary" size="mini" plain>{{name}}</el-button>
-        <el-button type="success" size="mini" plain>{{name}}</el-button>
-        <el-button type="warning" size="mini" plain>{{name}}</el-button>
-        <el-button type="danger" size="mini" plain>{{name}}</el-button>
-      </div>
-      <span class="cc">{{cc}}</span>
+      <el-container>
+        <el-header style="text-align: right; font-size: 12px">
+          <el-dropdown>
+            <i class="el-icon-setting" style="margin-right: 15px"></i>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>View</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <span>Tom</span>
+        </el-header>
+        <el-main>
+          <div>{{score}}</div>
+          <el-card :body-style="{ padding: '0px' }">
+            <img :src="p" class="image" />
+            <div style="padding: 14px;">
+              <span>???</span>
+            </div>
+          </el-card>
+          <el-row :gutter="20">
+            <el-col :span="6"><el-button type="primary" size="mini" plain>{{name}}</el-button></el-col>
+            <el-col :span="6"><el-button type="success" size="mini" plain>{{name}}</el-button></el-col>
+            <el-col :span="6"><el-button type="warning" size="mini" plain>{{name}}</el-button></el-col>
+            <el-col :span="6"><el-button type="danger" size="mini" plain>{{name}}</el-button></el-col>
+          </el-row>
+          <el-progress :percentage="70"></el-progress>
+          <span class="cc">{{cc}}</span>
+        </el-main>
+      </el-container>
     </div>
   </section>
 </template>
@@ -26,6 +41,7 @@ export default {
   },
   data: function () {
     return {
+      "score": 20,
       "p": require('~/assets/'+cats.list[0].photos[0].src),
       "name": cats.list[0].name,
       "cc": cats.list[0].photos[0].cc
