@@ -26,7 +26,7 @@
             </el-row>
             <el-row :gutter="20">
               <el-col :span="12" :xs="12">
-                <el-button type="primary" size="mini" plain @click="success(name)">{{name}}</el-button>
+                <el-button type="primary" size="mini" plain :disabled="able" @click="success(name)">{{name}}</el-button>
               </el-col>
               <el-col :span="12" :xs="12">
                 <el-button type="success" size="mini" plain>{{name}}</el-button>
@@ -67,17 +67,20 @@ export default {
       "score": 20,
       "p": require('~/assets/'+photo.src),
       "name": target.name,
-      "cc": photo.cc
+      "cc": photo.cc,
+      "able": false
     }
   },
   methods: {
     success: function (name) {
+      this.able = true;
       this.$message({
         message: 'Congrats, this is a success message.' + name,
         type: 'success'
       });
       this.score += 1;
-      this.setQuestion(cats.list)
+      this.setQuestion(cats.list);
+      this.able = false;
     },
     getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max));
