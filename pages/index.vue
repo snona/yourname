@@ -14,12 +14,16 @@
         <el-main>
           <div>{{score}}</div>
           <div>
-            <el-card :body-style="{ padding: '0px' }">
-              <img :src="p" class="image" />
-              <div style="padding: 14px;">
-                <span>???</span>
-              </div>
-            </el-card>
+            <el-row type="flex" justify="center">
+              <el-col :span="20">
+                <el-card :body-style="{ padding: '0px' }">
+                  <img :src="p" class="image" />
+                  <div style="padding: 14px;">
+                    <span>???</span>
+                  </div>
+                </el-card>
+              </el-col>
+            </el-row>
             <el-row :gutter="20">
               <el-col :span="12" :xs="12">
                 <el-button type="primary" size="mini" plain @click="success(name)">{{name}}</el-button>
@@ -72,9 +76,21 @@ export default {
         message: 'Congrats, this is a success message.' + name,
         type: 'success'
       });
+      this.score += 1;
+      this.setQuestion(cats.list)
     },
     getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max));
+    },
+    setQuestion(list) {
+      var tnum = this.getRandomInt(list.length);
+      var target = list[tnum];
+      var pnum = this.getRandomInt(target.photos.length);
+      var photo = target.photos[pnum];
+
+      this.p = require('~/assets/'+photo.src);
+      this.name = target.name;
+      this.cc = photo.cc;
     }
   },
 }
@@ -113,14 +129,25 @@ export default {
 }
 
 .image {
-  width: 300px;
+  max-width: 100%;
+  height: auto;
 }
 
 .cc {
   font-size: x-small;
+  width: 300px;
 }
 
 .el-row {
   padding-bottom: 10px;
+}
+
+.el-card {
+  width: 300px;
+  height: 450px;
+}
+
+.el-main {
+  width: 450px;
 }
 </style>
