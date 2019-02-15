@@ -135,7 +135,7 @@ export default {
 
 .cc {
   font-size: x-small;
-  width: 450px;
+  width: 400px;
 }
 
 .el-row {
@@ -144,10 +144,10 @@ export default {
 
 .el-card {
   width: 300px;
-  height: 450px;
+  height: 500px;
 }
 
 .el-main {
-  width: 450px;
+  width: 400px;
 }
 </style>
