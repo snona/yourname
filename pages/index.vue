@@ -13,7 +13,7 @@
         </el-header>
         <el-main>
           <div>{{score}}</div>
-          <div>
+          <div v-if="count < max">
             <el-row type="flex" justify="center">
               <el-col :span="20">
                 <el-card :body-style="{ padding: '0px' }">
@@ -26,25 +26,26 @@
             </el-row>
             <el-row :gutter="20">
               <el-col :span="12" :xs="12">
-                <el-button type="primary" size="mini" plain :disabled="able" @click="success(name)">{{name}}</el-button>
+                <el-button type="primary" size="mini" plain @click="success(name)">{{name}}</el-button>
               </el-col>
               <el-col :span="12" :xs="12">
-                <el-button type="success" size="mini" plain>{{name}}</el-button>
+                <el-button type="success" size="mini" plain @click="failed(name)">{{name2}}</el-button>
               </el-col>
             </el-row>
             <el-row :gutter="20">
               <el-col :span="12" :xs="12">
-                <el-button type="warning" size="mini" plain>{{name}}</el-button>
+                <el-button type="warning" size="mini" plain @click="failed(name)">{{name3}}</el-button>
               </el-col>
               <el-col :span="12" :xs="12">
-                <el-button type="danger" size="mini" plain>{{name}}</el-button>
+                <el-button type="danger" size="mini" plain @click="failed(name)">{{name4}}</el-button>
               </el-col>
             </el-row>
-            <el-progress :percentage="70"></el-progress>
+            <el-progress :percentage="count*10"></el-progress>
             <div class="cc">{{cc}}</div>
           </div>
-          <div>
-            <el-progress type="circle" :percentage="25"></el-progress>
+          <div v-else>
+            <el-progress type="circle" :percentage="score*10"></el-progress>
+            <el-button type="primary" size="mini" plain @click="reset()">Reset</el-button>
           </div>
         </el-main>
       </el-container>
@@ -63,24 +64,47 @@ export default {
     var target = cats.list[tnum];
     var pnum = this.getRandomInt(target.photos.length);
     var photo = target.photos[pnum];
+    var tnum2 = this.getRandomInt(cats.list.length);
+    var tnum3 = this.getRandomInt(cats.list.length);
+    var tnum4 = this.getRandomInt(cats.list.length);
+    var tname2 = cats.list[tnum2].name;
+    var tname3 = cats.list[tnum3].name;
+    var tname4 = cats.list[tnum4].name;
     return {
-      "score": 20,
+      "max": 10,
+      "count": 0,
+      "score": 0,
       "p": require('~/assets/'+photo.src),
       "name": target.name,
+      "name2": tname2,
+      "name3": tname3,
+      "name4": tname4,
       "cc": photo.cc,
       "able": false
     }
   },
   methods: {
+    reset: function () {
+      this.count = 0;
+      this.score = 0;
+      this.setQuestion(cats.list);
+    },
     success: function (name) {
-      this.able = true;
       this.$message({
-        message: 'Congrats, this is a success message.' + name,
+        message: '正解' + name,
         type: 'success'
       });
+      this.count += 1;
       this.score += 1;
       this.setQuestion(cats.list);
-      this.able = false;
+    },
+    failed: function (name) {
+      this.$message({
+        message: '間違い' + name,
+        type: 'error'
+      });
+      this.count += 1;
+      this.setQuestion(cats.list);
     },
     getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max));
@@ -94,6 +118,17 @@ export default {
       this.p = require('~/assets/'+photo.src);
       this.name = target.name;
       this.cc = photo.cc;
+
+      var tnum2 = this.getRandomInt(cats.list.length);
+      var tnum3 = this.getRandomInt(cats.list.length);
+      var tnum4 = this.getRandomInt(cats.list.length);
+      var tname2 = cats.list[tnum2].name;
+      var tname3 = cats.list[tnum3].name;
+      var tname4 = cats.list[tnum4].name;
+
+      this.name2 = tname2;
+      this.name3 = tname3;
+      this.name4 = tname4;
     }
   },
 }
