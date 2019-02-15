@@ -13,20 +13,27 @@
         </el-header>
         <el-main>
           <div>{{score}}</div>
-          <el-card :body-style="{ padding: '0px' }">
-            <img :src="p" class="image" />
-            <div style="padding: 14px;">
-              <span>???</span>
-            </div>
-          </el-card>
-          <el-row :gutter="20">
-            <el-col :span="6"><el-button type="primary" size="mini" plain>{{name}}</el-button></el-col>
-            <el-col :span="6"><el-button type="success" size="mini" plain>{{name}}</el-button></el-col>
-            <el-col :span="6"><el-button type="warning" size="mini" plain>{{name}}</el-button></el-col>
-            <el-col :span="6"><el-button type="danger" size="mini" plain>{{name}}</el-button></el-col>
-          </el-row>
-          <el-progress :percentage="70"></el-progress>
-          <span class="cc">{{cc}}</span>
+          <div>
+            <el-card :body-style="{ padding: '0px' }">
+              <img :src="p" class="image" />
+              <div style="padding: 14px;">
+                <span>???</span>
+              </div>
+            </el-card>
+            <el-row :gutter="20">
+              <el-col :span="6">
+                <el-button type="primary" size="mini" plain @click="success(name)">{{name}}</el-button>
+              </el-col>
+              <el-col :span="6"><el-button type="success" size="mini" plain>{{name}}</el-button></el-col>
+              <el-col :span="6"><el-button type="warning" size="mini" plain>{{name}}</el-button></el-col>
+              <el-col :span="6"><el-button type="danger" size="mini" plain>{{name}}</el-button></el-col>
+            </el-row>
+            <el-progress :percentage="70"></el-progress>
+            <div class="cc">{{cc}}</div>
+          </div>
+          <div>
+            <el-progress type="circle" :percentage="25"></el-progress>
+          </div>
         </el-main>
       </el-container>
     </div>
@@ -40,13 +47,28 @@ export default {
   components: {
   },
   data: function () {
+    var tnum = this.getRandomInt(cats.list.length);
+    var target = cats.list[tnum];
+    var pnum = this.getRandomInt(target.photos.length);
+    var photo = target.photos[pnum];
     return {
       "score": 20,
-      "p": require('~/assets/'+cats.list[0].photos[0].src),
-      "name": cats.list[0].name,
-      "cc": cats.list[0].photos[0].cc
+      "p": require('~/assets/'+photo.src),
+      "name": target.name,
+      "cc": photo.cc
     }
-  }
+  },
+  methods: {
+    success: function (name) {
+      this.$message({
+        message: 'Congrats, this is a success message.' + name,
+        type: 'success'
+      });
+    },
+    getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+  },
 }
 </script>
 
