@@ -135,7 +135,7 @@ export default {
 
 .cc {
   font-size: x-small;
-  width: 300px;
+  width: 450px;
 }
 
 .el-row {
